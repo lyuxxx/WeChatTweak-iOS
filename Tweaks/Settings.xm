@@ -7,7 +7,9 @@
 
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     BOOL isAutoRedEnvelopes = [userDefaults boolForKey:@"WeChatTweakAutoRedEnvelopesKey"];
-    BOOL isAutoRedEnvelopesKeepRunning = [userDefaults boolForKey:@"WeChatTweakAutoRedEnvelopesKeepRunningKey"];
+    // BOOL isAutoRedEnvelopesKeepRunning = [userDefaults boolForKey:@"WeChatTweakAutoRedEnvelopesKeepRunningKey"];
+    [userDefaults setBool:true forKey:@"WeChatTweakAutoRedEnvelopesKeepRunningKey"];
+    BOOL isAutoRedEnvelopesKeepRunning = true;
     BOOL isAutoRedEnvelopesDelayRandomly = [userDefaults boolForKey:@"WeChatTweakAutoRedEnvelopesDelayRandomlyKey"];
     BOOL isAutoRedEnvelopesFromMe = [userDefaults boolForKey:@"WeChatTweakAutoRedEnvelopesFromMeKey"];
     CGFloat delaySeconds = [userDefaults doubleForKey:@"WeChatTweakAutoRedEnvelopesDelaySecondsKey"];
@@ -48,7 +50,7 @@
 
 %new
 - (void)switchAutoRedEnvelopesKeepRunning:(UISwitch *)sender {
-    [[NSUserDefaults standardUserDefaults] setBool:sender.on forKey:@"WeChatTweakAutoRedEnvelopesKeepRunningKey"];
+    [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"WeChatTweakAutoRedEnvelopesKeepRunningKey"];
     [self reloadTableData];
 }
 

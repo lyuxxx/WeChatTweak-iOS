@@ -3,10 +3,11 @@
 %hook SelectAttachmentViewController
 
 - (unsigned int)numberOfAttachment {
-    return %orig + 2;
+    return %orig;
 }
 
 - (id)getTextAtIndex:(unsigned long)arg1 {
+    return %orig;
     if (arg1 == [self numberOfAttachment] - 1) {
         return @"猜拳";
     } else if (arg1 == [self numberOfAttachment] - 2) {
@@ -17,6 +18,7 @@
 }
 
 - (id)getImageAtIndex:(unsigned long)arg1 {
+    return %orig;
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if (arg1 == [self numberOfAttachment] - 1) {
         NSInteger rpsResult = [userDefaults integerForKey:@"WeChatTweakCustomRPSResultKey"];
@@ -39,6 +41,8 @@
 }
 
 - (void)OnAttachmentClicked:(UIButton *)arg1 {
+    %orig;
+    return;
     NSInteger buttonIndex = arg1.tag % 18000;
     if (buttonIndex == [self numberOfAttachment] -1) {
         UIAlertView *alertView = [[UIAlertView alloc] init];
@@ -72,6 +76,7 @@
 
 %new
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    return;
     if (alertView.tag == 0) {
         // 设置自定义猜拳结果
         if (buttonIndex <= 3) {
