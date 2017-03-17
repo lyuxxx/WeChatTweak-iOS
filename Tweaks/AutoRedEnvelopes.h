@@ -18,6 +18,12 @@
 
 @end
 
+@interface CMessageMgr : NSObject
+
+- (void)AddLocalMsg:(id)arg1 MsgWrap:(id)arg2 fixTime:(_Bool)arg3 NewMsgArriveNotify:(_Bool)arg4;
+
+@end
+
 @interface CMessageWrap : NSObject
 
 @property (nonatomic) NSUInteger m_uiMessageType;               // 消息类型
@@ -25,6 +31,11 @@
 @property (retain, nonatomic) NSString* m_nsToUsr;              // 收信人
 @property (retain, nonatomic) NSString* m_nsContent;            // 消息内容
 @property (retain, nonatomic) WCPayInfoItem *m_oWCPayInfoItem;  // PayInfo
+@property (assign, nonatomic) NSUInteger m_uiStatus;
+@property (assign, nonatomic) NSUInteger m_uiCreateTime;
+
+- (id)initWithMsgType:(long long)arg1;
++ (_Bool)isSenderFromMsgWrap:(id)arg1;
 
 @end
 
